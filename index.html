@@ -4,35 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Générateur de citations</title>
+  <meta name="theme-color" content="#764ba2">
+  <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <button id="btn-theme" class="theme-toggle" type="button" aria-label="Activer le mode sombre" aria-pressed="false">🌙</button>
   <main class="card">
     <h1>✨ Citation du moment</h1>
-    <div class="citation-ligne">
-      <blockquote id="citation">Clique sur le bouton pour découvrir une citation…</blockquote>
-      <button id="btn-favori" class="favori" type="button" aria-label="Ajouter aux favoris" aria-pressed="false" disabled>☆</button>
-    </div>
-    <p id="auteur" class="auteur"></p>
-    <div class="boutons">
-      <button id="btn-nouvelle">Nouvelle citation</button>
-      <button id="btn-copier" class="secondaire">Copier</button>
-      <button id="btn-partager" class="secondaire">Partager</button>
-    </div>
-    <form id="form-citation" class="form-citation">
-      <h2>Ajouter une citation</h2>
-      <label for="texte-citation">Citation</label>
-      <textarea id="texte-citation" rows="4" placeholder="Écris ta citation..." required></textarea>
-      <label for="auteur-citation">Auteur</label>
-      <input id="auteur-citation" type="text" placeholder="Nom de l'auteur" required>
-      <button type="submit">Ajouter</button>
-    </form>
-    <details class="panneau-favoris">
-      <summary>⭐ Favoris (<span id="compteur-favoris">0</span>)</summary>
-      <ul id="liste-favoris"></ul>
-      <p id="favoris-vides">Aucun favori pour le moment.</p>
-    </details>
+    <nav class="navigation" aria-label="Navigation principale">
+      <button class="onglet actif" type="button" data-vue="random" aria-selected="true">Aléatoire</button>
+      <button class="onglet" type="button" data-vue="all" aria-selected="false">Toutes</button>
+      <button class="onglet" type="button" data-vue="fav" aria-selected="false">Favoris</button>
+    </nav>
+    <section id="vue-random" class="vue" aria-labelledby="onglet-random">
+      <div class="recherche">
+        <label for="recherche-citations">Rechercher une citation</label>
+        <input id="recherche-citations" type="search" placeholder="Par texte ou auteur..." autocomplete="off">
+      </div>
+      <details id="panneau-recherche" class="panneau-recherche">
+        <summary><span id="compteur-resultats">0</span> résultats</summary>
+        <ul id="liste-resultats"></ul>
+        <p id="resultats-vides">Aucun résultat.</p>
+      </details>
+      <div class="citation-ligne">
+        <blockquote id="citation">Clique sur le bouton pour découvrir une citation…</blockquote>
+        <button id="btn-favori" class="favori" type="button" aria-label="Ajouter aux favoris" aria-pressed="false" disabled>☆</button>
+      </div>
+      <p id="auteur" class="auteur"></p>
+      <div id="tags-citation" class="tags-citation" aria-label="Tags de la citation"></div>
+      <p id="filtre-tag" class="filtre-tag" hidden></p>
+      <div class="boutons">
+        <button id="btn-nouvelle">Nouvelle citation</button>
+        <button id="btn-copier" class="secondaire">Copier</button>
+        <button id="btn-partager" class="secondaire">Partager</button>
+        <button id="btn-exporter" class="secondaire">🖼️ Exporter en image</button>
+        <button id="btn-monde" class="secondaire">🌍 Citations du monde</button>
+      </div>
+      <form id="form-citation" class="form-citation">
+        <h2>Ajouter une citation</h2>
+        <label for="texte-citation">Citation</label>
+        <textarea id="texte-citation" rows="4" placeholder="Écris ta citation..." required></textarea>
+        <label for="auteur-citation">Auteur</label>
+        <input id="auteur-citation" type="text" placeholder="Nom de l'auteur" required>
+        <label for="tags-citation-input">Tags (séparés par des virgules)</label>
+        <input id="tags-citation-input" type="text" placeholder="motivation, humour">
+        <button type="submit">Ajouter</button>
+      </form>
+    </section>
+    <section id="vue-all" class="vue" hidden>
+      <h2 class="titre-vue">Toutes les citations</h2>
+      <ul id="liste-toutes" class="liste-citations"></ul>
+    </section>
+    <section id="vue-fav" class="vue" hidden>
+      <h2 class="titre-vue">⭐ Mes favoris</h2>
+      <details class="panneau-favoris" open>
+        <summary><span id="compteur-favoris">0</span> favoris</summary>
+        <ul id="liste-favoris"></ul>
+        <p id="favoris-vides">Aucun favori pour le moment.</p>
+      </details>
+    </section>
   </main>
   <script src="script.js"></script>
 </body>

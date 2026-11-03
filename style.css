@@ -69,6 +69,134 @@ body {
 
 h1 { font-size: 1.5rem; margin-bottom: 25px; color: var(--couleur-titre); }
 
+.navigation {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 25px;
+}
+
+.onglet {
+  background: var(--couleur-bouton-secondaire);
+  color: var(--couleur-texte-secondaire);
+  flex: 1;
+  padding: 10px 12px;
+}
+
+.onglet:hover,
+.onglet.actif {
+  background: var(--couleur-bouton);
+  color: white;
+  transform: none;
+}
+
+.vue[hidden] {
+  display: none;
+}
+
+.titre-vue {
+  color: var(--couleur-titre);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.liste-citations {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  text-align: left;
+}
+
+.citation-item {
+  background: var(--couleur-bouton-secondaire);
+  border-radius: 10px;
+  color: var(--couleur-texte);
+  cursor: pointer;
+  padding: 12px;
+}
+
+.citation-item:hover {
+  background: var(--couleur-bouton);
+  color: white;
+}
+
+.citation-item-auteur {
+  color: var(--couleur-auteur);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.recherche {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.recherche label {
+  color: var(--couleur-texte);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.recherche input {
+  background: var(--couleur-carte);
+  border: 1px solid var(--couleur-bouton-secondaire);
+  border-radius: 10px;
+  color: var(--couleur-texte);
+  font: inherit;
+  padding: 10px 12px;
+}
+
+.recherche input:focus {
+  border-color: var(--couleur-bouton);
+  outline: 2px solid color-mix(in srgb, var(--couleur-bouton) 25%, transparent);
+}
+
+.panneau-recherche {
+  color: var(--couleur-texte);
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.panneau-recherche summary {
+  color: var(--couleur-titre);
+  cursor: pointer;
+  font-weight: 600;
+  list-style-position: inside;
+}
+
+.panneau-recherche ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  margin-top: 12px;
+}
+
+.resultat-item {
+  background: var(--couleur-bouton-secondaire);
+  border-radius: 10px;
+  color: var(--couleur-texte);
+  cursor: pointer;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+}
+
+.resultat-item:hover {
+  background: var(--couleur-bouton);
+  color: white;
+}
+
+.resultat-auteur {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
 blockquote {
   font-size: 1.2rem;
   font-style: italic;
@@ -127,7 +255,35 @@ blockquote.anim {
 
 .auteur { color: var(--couleur-auteur); font-weight: 600; margin-bottom: 25px; }
 
-.boutons { display: flex; gap: 10px; justify-content: center; }
+.tags-citation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin: -10px 0 15px;
+}
+
+.tag {
+  background: var(--couleur-bouton-secondaire);
+  border-radius: 999px;
+  color: var(--couleur-auteur);
+  font-size: 0.8rem;
+  padding: 5px 10px;
+}
+
+.tag:hover {
+  background: var(--couleur-bouton);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.filtre-tag {
+  color: var(--couleur-auteur);
+  font-size: 0.85rem;
+  margin: -5px 0 15px;
+}
+
+.boutons { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
 
 .form-citation {
   display: flex;
@@ -243,3 +399,4 @@ button {
 button:hover { background: var(--couleur-bouton-hover); transform: translateY(-2px); }
 button.secondaire { background: var(--couleur-bouton-secondaire); color: var(--couleur-texte-secondaire); }
 button.secondaire:hover { background: var(--couleur-bouton-secondaire); }
+button:disabled { cursor: wait; opacity: 0.7; }
