@@ -7,14 +7,32 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <button id="btn-theme" class="theme-toggle" type="button" aria-label="Activer le mode sombre" aria-pressed="false">🌙</button>
   <main class="card">
     <h1>✨ Citation du moment</h1>
-    <blockquote id="citation">Clique sur le bouton pour découvrir une citation…</blockquote>
+    <div class="citation-ligne">
+      <blockquote id="citation">Clique sur le bouton pour découvrir une citation…</blockquote>
+      <button id="btn-favori" class="favori" type="button" aria-label="Ajouter aux favoris" aria-pressed="false" disabled>☆</button>
+    </div>
     <p id="auteur" class="auteur"></p>
     <div class="boutons">
       <button id="btn-nouvelle">Nouvelle citation</button>
       <button id="btn-copier" class="secondaire">Copier</button>
+      <button id="btn-partager" class="secondaire">Partager</button>
     </div>
+    <form id="form-citation" class="form-citation">
+      <h2>Ajouter une citation</h2>
+      <label for="texte-citation">Citation</label>
+      <textarea id="texte-citation" rows="4" placeholder="Écris ta citation..." required></textarea>
+      <label for="auteur-citation">Auteur</label>
+      <input id="auteur-citation" type="text" placeholder="Nom de l'auteur" required>
+      <button type="submit">Ajouter</button>
+    </form>
+    <details class="panneau-favoris">
+      <summary>⭐ Favoris (<span id="compteur-favoris">0</span>)</summary>
+      <ul id="liste-favoris"></ul>
+      <p id="favoris-vides">Aucun favori pour le moment.</p>
+    </details>
   </main>
   <script src="script.js"></script>
 </body>
